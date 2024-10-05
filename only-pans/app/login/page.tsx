@@ -2,10 +2,17 @@
 
 import { VerificationLevel, IDKitWidget, useIDKit } from '@worldcoin/idkit'
 import type { ISuccessResult } from '@worldcoin/idkit'
-import { verify } from './actions/verify'
 import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
+import { verify } from '../actions/verify'
 
-export default function Home () {
+export default function LoginForm () {
   const app_id = process.env.NEXT_PUBLIC_WLD_APP_ID as `app_${string}`
   const action = process.env.NEXT_PUBLIC_WLD_ACTION
 
@@ -40,9 +47,12 @@ export default function Home () {
   }
 
   return (
-    <div>
-      <div className='flex flex-col items-center justify-center align-middle h-screen'>
-        <p className='text-2xl mb-5'>World ID Cloud Template</p>
+    <Card className='mx-auto max-w-sm my-72'>
+      <CardHeader>
+        <CardTitle className='text-xl'>Sign Up</CardTitle>
+        <CardDescription>Create a new account with World ID</CardDescription>
+      </CardHeader>
+      <CardContent>
         <IDKitWidget
           action={action}
           app_id={app_id}
@@ -50,8 +60,16 @@ export default function Home () {
           handleVerify={handleProof}
           verification_level={VerificationLevel.Device} // Change this to VerificationLevel.Device to accept Orb- and Device-verified users
         />
-        <Button onClick={() => setOpen(true)}>Verify with World ID</Button>
-      </div>
-    </div>
+        <div className='grid gap-4'>
+          <Button
+            type='submit'
+            className='w-full'
+            onClick={() => setOpen(true)}
+          >
+            Create an account
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
