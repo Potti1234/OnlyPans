@@ -51,8 +51,10 @@ export default function LoginForm () {
   return (
     <Card className='mx-auto max-w-sm my-72'>
       <CardHeader>
-        <CardTitle className='text-xl'>Sign Up</CardTitle>
-        <CardDescription>Create a new account with World ID</CardDescription>
+        <CardTitle className='text-xl'>Sign In</CardTitle>
+        <CardDescription>
+          Sign in with World ID to find the hottest pictures available
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <IDKitWidget
@@ -66,9 +68,9 @@ export default function LoginForm () {
           <Button
             type='submit'
             className='w-full'
-            onClick={() => setIsLoggedIn(true)}
+            onClick={() => setOpen(true)}
           >
-            Create an account
+            Sign in
           </Button>
         </div>
       </CardContent>

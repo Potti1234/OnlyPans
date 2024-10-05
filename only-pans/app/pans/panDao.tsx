@@ -7,6 +7,7 @@ export interface Pan {
   title: string
   description: string
   image: string
+  category: string
 }
 
 export async function getPans (): Promise<Pan[]> {
@@ -15,7 +16,13 @@ export async function getPans (): Promise<Pan[]> {
       sort: '-created'
     })
     return records.map(
-      (record: { id: any; title: any; description: any; image: any }) => ({
+      (record: {
+        id: string
+        title: string
+        description: string
+        image: string
+        category: string
+      }) => ({
         id: record.id,
         title: record.title,
         description: record.description,
@@ -23,7 +30,8 @@ export async function getPans (): Promise<Pan[]> {
           'https://pocketbase.lukaspottner.com/api/files/igvsz0mt9gq6keg/' +
           record.id +
           '/' +
-          record.image
+          record.image,
+        category: record.category
       })
     )
   } catch (error) {
@@ -41,7 +49,8 @@ export async function getPanById (id: string): Promise<Pan | null> {
       description: record.description,
       image:
         'https://pocketbase.lukaspottner.com/api/files/igvsz0mt9gq6keg/oempvaa11mn6xyq/' +
-        record.image
+        record.image,
+      category: record.category
     }
   } catch (error) {
     console.error(`Error fetching pan with id ${id}:`, error)
