@@ -18,10 +18,10 @@ export default async function Header () {
             <span className='sr-only'>Home</span>
           </Link>
           <Link
-            href='/content'
+            href='/pans'
             className='text-muted-foreground transition-colors hover:text-foreground'
           >
-            Content
+            Pans
           </Link>
         </nav>
         <Sheet>
@@ -50,10 +50,10 @@ export default async function Header () {
                 Home
               </Link>
               <Link
-                href='/content'
+                href='/pans'
                 className='text-muted-foreground hover:text-foreground'
               >
-                Content
+                Pans
               </Link>
             </nav>
           </SheetContent>

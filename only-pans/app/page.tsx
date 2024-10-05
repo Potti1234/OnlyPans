@@ -1,11 +1,23 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { VerificationLevel, IDKitWidget, useIDKit } from '@worldcoin/idkit'
 import type { ISuccessResult } from '@worldcoin/idkit'
 import { verify } from './actions/verify'
 import { Button } from '@/components/ui/button'
+import { useAuthStore } from '@/lib/auth'
 
 export default function Home () {
+  const router = useRouter()
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn)
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/pans')
+    }
+  }, [isLoggedIn, router])
+
   const app_id = process.env.NEXT_PUBLIC_WLD_APP_ID as `app_${string}`
   const action = process.env.NEXT_PUBLIC_WLD_ACTION
 

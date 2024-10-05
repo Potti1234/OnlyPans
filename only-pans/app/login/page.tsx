@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { VerificationLevel, IDKitWidget, useIDKit } from '@worldcoin/idkit'
 import type { ISuccessResult } from '@worldcoin/idkit'
 import { Button } from '@/components/ui/button'
@@ -11,8 +12,12 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { verify } from '../actions/verify'
+import { useAuthStore } from '@/lib/auth'
 
 export default function LoginForm () {
+  const router = useRouter()
+  const setIsLoggedIn = useAuthStore(state => state.setIsLoggedIn)
+
   const app_id = process.env.NEXT_PUBLIC_WLD_APP_ID as `app_${string}`
   const action = process.env.NEXT_PUBLIC_WLD_ACTION
 
@@ -26,11 +31,8 @@ export default function LoginForm () {
   const { setOpen } = useIDKit()
 
   const onSuccess = (result: ISuccessResult) => {
-    // This is where you should perform frontend actions once a user has been verified, such as redirecting to a new page
-    window.alert(
-      'Successfully verified with World ID! Your nullifier hash is: ' +
-        result.nullifier_hash
-    )
+    setIsLoggedIn(true)
+    router.push('/pans')
   }
 
   const handleProof = async (result: ISuccessResult) => {
