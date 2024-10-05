@@ -31,7 +31,8 @@ export default function LoginForm () {
   const { setOpen } = useIDKit()
 
   const onSuccess = (result: ISuccessResult) => {
-    setIsLoggedIn(result != null)
+    console.log('Success result:', result)
+    setIsLoggedIn(true)
     router.push('/pans')
   }
 
