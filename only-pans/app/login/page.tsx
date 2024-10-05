@@ -66,7 +66,7 @@ export default function LoginForm () {
           <Button
             type='submit'
             className='w-full'
-            onClick={() => setOpen(true)}
+            onClick={() => setIsLoggedIn(true)}
           >
             Create an account
           </Button>
