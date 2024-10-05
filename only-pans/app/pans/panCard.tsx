@@ -21,7 +21,7 @@ const PanCard: React.FC<PanCardProps> = ({ pan }) => {
         <CardDescription className='text-sm'>{pan.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className='relative h-48 w-full'>
+        <div className='relative h-96 w-full'>
           <Image
             src={pan.image}
             alt={pan.description}
