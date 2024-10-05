@@ -8,7 +8,6 @@ import {
   CardDescription,
   CardContent
 } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
 
 interface PanCardProps {
   pan: Pan
